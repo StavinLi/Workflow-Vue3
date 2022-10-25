@@ -1,0 +1,118 @@
+.el-drawer__header button.el-drawer__close-btn {
+    display: none !important;
+}
+
+.el-drawer__header {
+    margin-bottom: 0 !important;
+    padding: 14px 0 14px 20px !important;
+    /* border-bottom: 1px solid #f2f2f2 !important; */
+    color: #323232 !important;
+    font-size: 16px !important;
+}
+.el-drawer__header .el-drawer__title{
+    font-size: 16px !important;
+}
+.demo-drawer__content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.drawer_content {
+    flex: 1 !important;
+}
+
+.demo-drawer__content>div {
+    border-top: 1px solid #F2F2F2 !important;
+}
+
+.el-button {
+    min-width: 79px !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    border-radius: 2px !important;
+    color: #323232 !important;
+    background: #f2f2f2 !important;
+    height: 30px !important;
+}
+
+.el-button.el-button--primary {
+    background: #46A6FE !important;
+    color: #fff !important;
+}
+
+.demo-drawer__footer {
+    padding: 10px 30px !important;
+    border-top: 1px solid #F2F2F2 !important;
+}
+
+.demo-drawer__footer .el-button {
+    float: right !important;
+    margin-right: 10px !important;
+}
+
+.el-dialog {
+    width: 520px;
+    border: 1px solid #DDE1E5 !important;
+    border-radius: 3px !important;
+}
+
+.el-dialog__header {
+    padding: 0 0 0 20px !important;
+    line-height: 50px !important;
+    height: 50px !important;
+    background: #fff !important;
+    border-bottom: 1px solid #F2F2F2 !important;
+}
+
+.el-dialog__header .el-dialog__title {
+    font-size: 16px !important;
+    line-height: 50px !important;
+    color: #333333 !important;
+}
+
+.el-dialog__header .el-dialog__headerbtn {
+    height: 12px !important;
+    width: 12px !important;
+}
+
+.el-dialog__header .el-icon-close {
+    width: 12px !important;
+    height: 12px !important;
+    float: left !important;
+}
+
+.el-dialog__header .el-icon-close::before {
+    display: block !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: url(~@/assets/images/add-close.png) no-repeat center !important;
+    background-size: 100% 100% !important;
+    content: "" !important;
+}
+.el-drawer__body {
+    padding: 0 !important;
+}
+.el-dialog__footer {
+    border-top: 1px solid #F2F2F2 !important;
+    padding-bottom: 10px !important;
+}
+
+.el-checkbox,
+.el-checkbox__input.is-checked+.el-checkbox__label,
+.el-radio,
+.el-radio__input.is-checked+.el-radio__label,
+.el-dialog__body,
+.el-tree {
+    color: #333 !important;
+}
+
+.el-radio__label, .el-checkbox__label {
+    font-size: 12px !important;
+}
+.my-el-custom-spinner {
+    display: inline-block !important;
+    width: 80px !important;
+    height: 80px !important;
+    background: url(~@/assets/images/loading.gif) no-repeat center !important;
+}
