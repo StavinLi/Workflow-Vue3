@@ -1,5 +1,5 @@
 <template>
-    <el-drawer :append-to-body="true" title="审批人设置" v-model="visible" direction="rtl" custom-class="set_promoter" size="550px" :before-close="saveApprover"> 
+    <el-drawer :append-to-body="true" title="审批人设置" v-model="visible" direction="rtl" class="set_promoter" size="550px" :before-close="saveApprover"> 
         <div class="demo-drawer__content">
             <div class="drawer_content">
                 <div class="approver_content">

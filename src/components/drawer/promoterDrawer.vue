@@ -5,7 +5,7 @@
  * @FilePath: /Workflow-Vue3/src/components/drawer/promoterDrawer.vue
 -->
 <template>
-    <el-drawer :append-to-body="true" title="发起人" v-model="visible" direction="rtl" custom-class="set_promoter" size="550px" :before-close="savePromoter"> 
+    <el-drawer :append-to-body="true" title="发起人" v-model="visible" direction="rtl" class="set_promoter" size="550px" :before-close="savePromoter"> 
         <div class="demo-drawer__content">
             <div class="promoter_content drawer_content">
                 <p>{{ $func.arrToStr(flowPermission) || '所有人' }}</p>

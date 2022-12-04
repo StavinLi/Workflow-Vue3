@@ -97,8 +97,8 @@ if (type == 1 || type == 2) {
 > git clone https://github.com/StavinLi/Workflow.git 点个赞吧！
 
 #### 项目运行
-> 1.环境依赖  `npm i`
+> 1.环境依赖  `pnpm install`
 
-> 2.本地运行 `npm run serve` 
+> 2.本地运行 `pnpm dev` 
 
-> 3.打包运行 `npm run build` 
+> 3.打包运行 `pnpm build` 
