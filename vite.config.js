@@ -1,12 +1,18 @@
+/*
+ * @Date: 2022-10-25 19:36:56
+ * @LastEditors: lichen39 lichen39@58.com
+ * @LastEditTime: 2023-03-15 11:20:45
+ * @FilePath: /Workflow-Vue3/vite.config.js
+ */
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({mode})=>{
-  const env = loadEnv(mode, __dirname)
+  console.log(mode);
   return {
     resolve: {
       alias: {
@@ -25,7 +31,7 @@ export default defineConfig(({mode})=>{
           }
       }
     },
-    base: env.VITE_MODE === "production" ? '/Workflow-Vue3/dist/' : '/',
+    base: mode === "production" ? '/Workflow-Vue3/dist/' : '/',
     plugins: [
       vue(),
       AutoImport({
