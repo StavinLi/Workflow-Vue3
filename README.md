@@ -25,7 +25,7 @@ workflow钉钉审批流程设置，基于vue开发。QQ交流群：639251756
 3. 节点设置（包括审批人、发起人、抄送人、条件设置）
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200304140232374.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3Mjg1MTkz,size_16,color_FFFFFF,t_70#pic_center)
 ```javascript
-<el-drawer title="审批人设置" :visible.sync="approverDrawer" direction="rtl" class="set_promoter" size="550px" :before-close="saveApprover"> 
+<el-drawer title="审批人设置" :visible.sync="approverDrawer" class="set_promoter" :show-close="false" :size="550" :before-close="saveApprover"> 
     <div class="demo-drawer__content">
         <div class="drawer_content">
             <div class="approver_content">

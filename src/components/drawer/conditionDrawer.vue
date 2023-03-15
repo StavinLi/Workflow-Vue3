@@ -1,5 +1,5 @@
 <template>
-    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" direction="rtl" custom-class="condition_copyer" size="550px" :before-close="saveCondition"> 
+    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" custom-class="condition_copyer" :show-close="false" :size="550" :before-close="saveCondition"> 
         <template #header="{ titleId, titleClass }">
             <h3 :id="titleId" :class="titleClass">条件设置</h3>
             <select v-model="conditionConfig.priorityLevel" class="priority_level">
@@ -57,7 +57,7 @@
                     </li>
                 </ul>
                 <el-button type="primary" @click="addCondition">添加条件</el-button>
-                <el-dialog title="选择条件" v-model="conditionVisible" width="480px" append-to-body custom-class="condition_list">
+                <el-dialog title="选择条件" v-model="conditionVisible" :width="480" append-to-body class="condition_list">
                     <p>请选择用来区分审批流程的条件字段</p>
                     <p class="check_box">
                         <a :class="$func.toggleClass(conditionList,{columnId:0},'columnId')&&'active'" @click="$func.toChecked(conditionList,{columnId:0},'columnId')">发起人</a>

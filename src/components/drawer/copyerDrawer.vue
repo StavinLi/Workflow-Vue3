@@ -1,11 +1,11 @@
 <!--
  * @Date: 2022-08-25 14:05:59
- * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2022-09-21 14:36:45
+ * * @LastEditors: StavinLi 495727881@qq.com
+ * @LastEditTime: 2023-03-15 14:52:34
  * @FilePath: /Workflow-Vue3/src/components/drawer/copyerDrawer.vue
 -->
 <template>
-    <el-drawer :append-to-body="true" title="抄送人设置" v-model="visible" direction="rtl" custom-class="set_copyer" size="550px" :before-close="saveCopyer"> 
+    <el-drawer :append-to-body="true" title="抄送人设置" v-model="visible" custom-class="set_copyer" :show-close="false" :size="550" :before-close="saveCopyer"> 
         <div class="demo-drawer__content">
             <div class="copyer_content drawer_content">
                 <el-button type="primary" @click="addCopyer">添加成员</el-button>

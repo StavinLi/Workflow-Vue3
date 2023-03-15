@@ -1,7 +1,3 @@
-.el-drawer__header button.el-drawer__close-btn {
-    display: none !important;
-}
-
 .el-drawer__header {
     margin-bottom: 0 !important;
     padding: 14px 0 14px 20px !important;

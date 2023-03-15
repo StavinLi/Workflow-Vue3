@@ -1,11 +1,11 @@
 <!--
  * @Date: 2022-08-25 14:05:59
- * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2022-09-21 14:36:50
+ * * @LastEditors: StavinLi 495727881@qq.com
+ * @LastEditTime: 2023-03-15 14:51:03
  * @FilePath: /Workflow-Vue3/src/components/drawer/promoterDrawer.vue
 -->
 <template>
-    <el-drawer :append-to-body="true" title="发起人" v-model="visible" direction="rtl" custom-class="set_promoter" size="550px" :before-close="savePromoter"> 
+    <el-drawer :append-to-body="true" title="发起人" v-model="visible" custom-class="set_promoter" :show-close="false" :size="550" :before-close="savePromoter"> 
         <div class="demo-drawer__content">
             <div class="promoter_content drawer_content">
                 <p>{{ $func.arrToStr(flowPermission) || '所有人' }}</p>
