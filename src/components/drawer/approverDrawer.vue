@@ -105,7 +105,6 @@ let props = defineProps({
         default: 0
     }
 });
-let emits = defineEmits(['update:nodeConfig']);
 let approverConfig = ref({})
 let approverVisible = ref(false)
 let approverRoleVisible = ref(false)
@@ -163,7 +162,6 @@ const saveApprover = ()=> {
         flag: true,
         id: approverConfig1.value.id
     })
-    emits("update:nodeConfig", approverConfig.value);
     closeDrawer()
 }
 const closeDrawer = ()=> {
