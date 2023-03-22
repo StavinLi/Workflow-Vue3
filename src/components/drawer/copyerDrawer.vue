@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-08-25 14:05:59
- * * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2023-03-15 14:52:34
+ * @LastEditors: StavinLi 495727881@qq.com
+ * @LastEditTime: 2023-03-16 16:13:48
  * @FilePath: /Workflow-Vue3/src/components/drawer/copyerDrawer.vue
 -->
 <template>
@@ -25,7 +25,7 @@
             </div>
             <employees-role-dialog 
                 v-model:visible="copyerVisible"
-                v-model:data="checkedList"
+                :data="checkedList"
                 @change="sureCopyer"
             />
         </div>

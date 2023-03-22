@@ -72,7 +72,7 @@
             </div>
             <employees-role-dialog 
                 v-model:visible="conditionRoleVisible"
-                v-model:data="checkedList"
+                :data="checkedList"
                 @change="sureConditionRole"
                 :isDepartment="true"
             />
@@ -172,7 +172,7 @@ const sureCondition = () => {
             continue;
         }
         if (columnId == 0) {
-            conditionConfig.value.nodeUserList == [];
+            conditionConfig.value.nodeUserList = [];
             conditionConfig.value.conditionList.push({
                 "type": 1,
                 "columnId": columnId,

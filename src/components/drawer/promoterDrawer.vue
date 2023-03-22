@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-08-25 14:05:59
- * * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2023-03-15 14:51:03
+ * @LastEditors: StavinLi 495727881@qq.com
+ * @LastEditTime: 2023-03-17 16:06:24
  * @FilePath: /Workflow-Vue3/src/components/drawer/promoterDrawer.vue
 -->
 <template>
@@ -18,7 +18,7 @@
             <employees-dialog 
                 :isDepartment="true"
                 v-model:visible="promoterVisible"
-                v-model:data="checkedList"
+                :data="checkedList"
                 @change="surePromoter"
             />
         </div>
@@ -71,11 +71,9 @@ const closeDrawer = () => {
 .set_promoter {
     .promoter_content {
         padding: 0 20px;
-
         .el-button {
             margin-bottom: 20px;
         }
-
         p {
             padding: 18px 0;
             font-size: 14px;

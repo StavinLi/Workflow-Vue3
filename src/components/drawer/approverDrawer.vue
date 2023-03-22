@@ -82,12 +82,12 @@
             </div>
             <employees-dialog 
                 v-model:visible="approverVisible"
-                v-model:data="checkedList"
+                :data="checkedList"
                 @change="sureApprover"
             />
             <role-dialog 
                 v-model:visible="approverRoleVisible"
-                v-model:data="checkedRoleList"
+                :data="checkedRoleList"
                 @change="sureRoleApprover"
             />
         </div>
