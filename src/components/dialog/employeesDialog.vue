@@ -24,7 +24,7 @@ import selectBox from '../selectBox.vue';
 import selectResult from '../selectResult.vue';
 import { computed, watch, ref } from 'vue';
 import { departments, getDebounceData, getDepartmentList, searchVal } from './common'
-import $func from '@/plugins/preload.js'
+import $func from '@/utils/index.js'
 let props = defineProps({
   visible: {
     type: Boolean,

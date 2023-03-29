@@ -33,8 +33,8 @@
 </template>
 <script setup>
 import employeesRoleDialog from '../dialog/employeesRoleDialog.vue'
-import $func from '@/plugins/preload'
-import { mapState, mapMutations } from '@/plugins/lib.js'
+import $func from '@/utils/index'
+import { mapState, mapMutations } from '@/utils/lib.js'
 import { ref, watch, computed } from 'vue'
 let copyerConfig = ref({})
 let ccSelfSelectFlag = ref([])

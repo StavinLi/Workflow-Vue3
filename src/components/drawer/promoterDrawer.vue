@@ -26,8 +26,8 @@
 </template>
 <script setup>
 import employeesDialog from '../dialog/employeesDialog.vue'
-import $func from '@/plugins/preload'
-import { mapState, mapMutations } from '@/plugins/lib'
+import $func from '@/utils/index'
+import { mapState, mapMutations } from '@/utils/lib'
 import { computed, ref, watch } from 'vue'
 let flowPermission = ref([])
 let promoterVisible = ref(false)

@@ -38,16 +38,16 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
+import { useRoute } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { getWorkFlowData, setWorkFlowData } from '@/api/index';
+import { mapMutations } from "@/utils/lib";
 import errorDialog from "@/components/dialog/errorDialog.vue";
 import promoterDrawer from "@/components/drawer/promoterDrawer.vue";
 import approverDrawer from "@/components/drawer/approverDrawer.vue";
 import copyerDrawer from "@/components/drawer/copyerDrawer.vue";
 import conditionDrawer from "@/components/drawer/conditionDrawer.vue";
-import { ElMessage } from 'element-plus'
-import { ref, onMounted } from "vue";
-import { useRoute } from 'vue-router'
-import { getWorkFlowData, setWorkFlowData } from "@/plugins/api.js";
-import { mapMutations } from "@/plugins/lib.js";
 let { setTableId, setIsTried } = mapMutations()
 
 let tipList = ref([]);
@@ -107,15 +107,15 @@ const reErr = ({ childNode }) => {
 const saveSet = async () => {
   setIsTried(true);
   tipList.value = [];
-  reErr(nodeConfig);
+  reErr(nodeConfig.value);
   if (tipList.value.length != 0) {
     tipVisible.value = true;
     return;
   }
   processConfig.value.flowPermission = flowPermission.value;
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify(processConfig));
-  let res = await setWorkFlowData(processConfig);
+  console.log(JSON.stringify(processConfig.value));
+  let res = await setWorkFlowData(processConfig.value);
   if (res.code == 200) {
     ElMessage.success("设置成功")
     setTimeout(function () {

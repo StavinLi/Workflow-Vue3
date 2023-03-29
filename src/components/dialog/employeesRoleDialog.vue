@@ -27,7 +27,7 @@
 import selectBox from '../selectBox.vue';
 import selectResult from '../selectResult.vue';
 import { computed, watch, ref } from 'vue'
-import $func from '@/plugins/preload.js'
+import $func from '@/utils/index.js'
 import { departments, roles, getDebounceData, getRoleList, getDepartmentList, searchVal } from './common'
 let props = defineProps({
   visible: {

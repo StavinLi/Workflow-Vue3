@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2022-09-21 14:41:53
+ * @LastEditors: StavinLi 495727881@qq.com
+ * @LastEditTime: 2023-03-29 15:54:07
+ * @FilePath: /Workflow-Vue3/src/components/nodeWrap.vue
+-->
 <template>
   <div class="node-wrap" v-if="nodeConfig.type < 3">
     <div class="node-wrap-box" :class="(nodeConfig.type == 0 ? 'start-node ' : '') +(isTried && nodeConfig.error ? 'active error' : '')">
@@ -81,12 +87,12 @@
   <nodeWrap v-if="nodeConfig.childNode" v-model:nodeConfig="nodeConfig.childNode"/>
 </template>
 <script setup>
-import $func from "@/plugins/preload";
-import { mapState, mapMutations } from "@/plugins/lib.js";
 import { onMounted, ref, watch, getCurrentInstance, computed } from "vue";
+import $func from "@/utils/index";
+import { mapState, mapMutations } from "@/utils/lib";
+import { bgColors, placeholderList } from '@/utils/const'
 let _uid = getCurrentInstance().uid;
-let bgColors = ['87, 106, 149', '255, 148, 62', '50, 150, 250']
-let placeholderList = ["发起人", "审核人", "抄送人"];
+
 let props = defineProps({
     nodeConfig: {
         type: Object,

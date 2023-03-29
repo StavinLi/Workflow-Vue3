@@ -1,11 +1,12 @@
 /*
- * @Date: 2022-08-25 14:05:59
+ * @Date: 2022-08-29 14:00:42
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2022-09-21 14:36:34
+ * @LastEditTime: 2023-03-29 15:53:05
  * @FilePath: /Workflow-Vue3/src/components/dialog/common.js
  */
-import { getRoles, getDepartments, getEmployees } from '@/plugins/api.js'
-import $func from '@/plugins/preload.js'
+
+import { getRoles, getDepartments, getEmployees } from '@/api/index.js'
+import $func from '@/utils/index.js'
 import { ref } from 'vue'
 export let searchVal = ref('')
 export let departments = ref({

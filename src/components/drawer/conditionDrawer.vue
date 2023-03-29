@@ -1,3 +1,10 @@
+<!--
+ * @Date: 2023-03-15 14:44:17
+ * @LastEditors: StavinLi 495727881@qq.com
+ * @LastEditTime: 2023-03-29 15:53:11
+ * @FilePath: /Workflow-Vue3/src/components/drawer/conditionDrawer.vue
+-->
+
 <template>
     <el-drawer :append-to-body="true" title="条件设置" v-model="visible" custom-class="condition_copyer" :show-close="false" :size="550" :before-close="saveCondition"> 
         <template #header="{ titleId, titleClass }">
@@ -29,25 +36,18 @@
                         <div v-else>
                             <p>
                                 <select v-model="item.optType" :style="'width:'+(item.optType==6?370:100)+'px'" @change="changeOptType(item)">
-                                    <option value="1">小于</option>
-                                    <option value="2">大于</option>
-                                    <option value="3">小于等于</option>
-                                    <option value="4">等于</option>
-                                    <option value="5">大于等于</option>
-                                    <option value="6">介于两个数之间</option>
+                                    <option v-for="({value, label}) in optTypes" :value="value" :key="value">{{ label }}</option>
                                 </select>
                                 <input v-if="item.optType!=6" type="text" :placeholder="'请输入'+item.showName" v-enter-number="2" v-model="item.zdy1">
                             </p>
                             <p v-if="item.optType==6">
                                 <input type="text" style="width:75px;" class="mr_10" v-enter-number="2" v-model="item.zdy1">
                                 <select style="width:60px;" v-model="item.opt1">
-                                    <option value="<">&lt;</option>
-                                    <option value="≤">≤</option>
+                                    <option v-for="({value, label}) in opt1s" :value="value" :key="value">{{ label }}</option>
                                 </select>
                                 <span class="ellipsis" style="display:inline-block;width:60px;vertical-align: text-bottom;">{{item.showName}}</span>
                                 <select style="width:60px;" class="ml_10" v-model="item.opt2">
-                                    <option value="<">&lt;</option>
-                                    <option value="≤">≤</option>
+                                    <option v-for="({value, label}) in opt1s" :value="value" :key="value">{{ label }}</option>
                                 </select>
                                 <input type="text" style="width:75px;" v-enter-number="2" v-model="item.zdy2">
                             </p>
@@ -84,11 +84,13 @@
     </el-drawer>
 </template>
 <script setup>
-import employeesRoleDialog from '../dialog/employeesRoleDialog.vue'
-import $func from '@/plugins/preload'
-import { mapState, mapMutations } from '@/plugins/lib.js'
-import { getConditions } from '@/plugins/api.js'
 import { ref, watch, computed } from 'vue'
+import $func from '@/utils/index'
+import { mapState, mapMutations } from '@/utils/lib'
+import { optTypes, opt1s } from '@/utils/const'
+import { getConditions } from '@/api/index'
+import employeesRoleDialog from '../dialog/employeesRoleDialog.vue'
+
 let conditionVisible = ref(false)
 let conditionsConfig = ref({
     conditionNodes: [],

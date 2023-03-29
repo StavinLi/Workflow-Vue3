@@ -1,10 +1,11 @@
 /*
  * @Date: 2022-08-25 14:06:59
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2022-09-21 14:36:58
- * @FilePath: /Workflow-Vue3/src/plugins/api.js
+ * @LastEditTime: 2023-03-29 15:52:57
+ * @FilePath: /Workflow-Vue3/src/api/index.js
  */
-import http from '@/plugins/axios'
+
+import http from '@/utils/axios'
 let baseUrl = import.meta.env.BASE_URL
 
 /**

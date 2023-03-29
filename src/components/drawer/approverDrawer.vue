@@ -4,11 +4,7 @@
             <div class="drawer_content">
                 <div class="approver_content">
                     <el-radio-group v-model="approverConfig.settype" class="clear" @change="changeType">
-                        <el-radio :label="1">指定成员</el-radio>
-                        <el-radio :label="2">主管</el-radio>
-                        <el-radio :label="4">发起人自选</el-radio>
-                        <el-radio :label="5">发起人自己</el-radio>
-                        <el-radio :label="7">连续多级主管</el-radio>
+                        <el-radio v-for="({value, label}) in setTypes" :key="value" :label="value">{{label}}</el-radio>
                     </el-radio-group>
                     <el-button type="primary" @click="addApprover" v-if="approverConfig.settype==1">添加/修改成员</el-button>
                     <p class="selected_list" v-if="approverConfig.settype==1">
@@ -32,23 +28,23 @@
                 </div>
                 <div class="approver_self_select" v-show="approverConfig.settype==4">
                     <el-radio-group v-model="approverConfig.selectMode" style="width: 100%;">
-                        <el-radio :label="1">选一个人</el-radio>
-                        <el-radio :label="2">选多个人</el-radio>
+                        <el-radio v-for="({value, label}) in selectModes" :label="value" :key="value">{{label}}</el-radio>
                     </el-radio-group>
                     <h3>选择范围</h3>
                     <el-radio-group v-model="approverConfig.selectRange" style="width: 100%;" @change="changeRange">
-                        <el-radio :label="1">全公司</el-radio>
-                        <el-radio :label="2">指定成员</el-radio>
-                        <el-radio :label="3">指定角色</el-radio>
+                        <el-radio v-for="({value, label}) in selectRanges" :label="value" :key="value">{{label}}</el-radio>
                     </el-radio-group>
-                    <el-button type="primary" @click="addApprover" v-if="approverConfig.selectRange==2">添加/修改成员</el-button>
-                    <el-button type="primary" @click="addRoleApprover" v-if="approverConfig.selectRange==3">添加/修改角色</el-button>
-                    <p class="selected_list" v-if="approverConfig.selectRange==2||approverConfig.selectRange==3">
-                        <span v-for="(item,index) in approverConfig.nodeUserList" :key="index">{{item.name}}
-                            <img src="@/assets/images/add-close1.png" @click="$func.removeEle(approverConfig.nodeUserList,item,'targetId')">
-                        </span>
-                        <a v-if="approverConfig.nodeUserList.length!=0&&approverConfig.selectRange!=1" @click="approverConfig.nodeUserList=[]">清除</a>
-                    </p>
+                    <template v-if="approverConfig.selectRange==2||approverConfig.selectRange==3">
+                        <el-button type="primary" @click="addApprover" v-if="approverConfig.selectRange==2">添加/修改成员</el-button>
+                        <el-button type="primary" @click="addRoleApprover" v-else>添加/修改角色</el-button>
+                        <p class="selected_list">
+                            <span v-for="(item,index) in approverConfig.nodeUserList" :key="index">{{item.name}}
+                                <img src="@/assets/images/add-close1.png" @click="$func.removeEle(approverConfig.nodeUserList,item,'targetId')">
+                            </span>
+                            <a v-if="approverConfig.nodeUserList.length!=0&&approverConfig.selectRange!=1" @click="approverConfig.nodeUserList=[]">清除</a>
+                        </p>
+                    </template>
+                    
                 </div>
                 <div class="approver_manager" v-if="approverConfig.settype==7">
                     <p>审批终点</p>
@@ -94,11 +90,13 @@
     </el-drawer>
 </template>
 <script setup>
+import {ref, watch, computed} from 'vue'
+import $func from '@/utils/index'
+import { setTypes, selectModes, selectRanges } from '@/utils/const'
+import { mapState, mapMutations } from '@/utils/lib'
 import employeesDialog from '../dialog/employeesDialog.vue'
 import roleDialog from '../dialog/roleDialog.vue'
-import $func from '@/plugins/preload.js'
-import {mapState, mapMutations} from '@/plugins/lib'
-import {ref, watch, computed} from 'vue'
+
 let props = defineProps({
     directorMaxLevel: {
         type: Number,
