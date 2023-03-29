@@ -31,11 +31,7 @@ workflow钉钉审批流程设置，基于vue开发。QQ交流群：639251756
         <div class="drawer_content">
             <div class="approver_content">
                 <el-radio-group v-model="approverConfig.settype" class="clear" @change="changeType">
-                    <el-radio :label="1">指定成员</el-radio>
-                    <el-radio :label="2">主管</el-radio>
-                    <el-radio :label="4">发起人自选</el-radio>
-                    <el-radio :label="5">发起人自己</el-radio>
-                    <el-radio :label="7">连续多级主管</el-radio>
+                    <el-radio v-for="({value, label}) in setTypes" :key="value" :label="value">{{label}}</el-radio>
                 </el-radio-group>
                 ...
 ```

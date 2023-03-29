@@ -1,11 +1,11 @@
 <!--
  * @Date: 2022-08-25 14:05:59
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2022-09-21 14:36:40
+ * @LastEditTime: 2023-03-29 16:05:54
  * @FilePath: /Workflow-Vue3/src/components/dialog/errorDialog.vue
 -->
 <template>
-  <el-dialog title="提示" v-model="visibleDialog">
+  <el-dialog title="提示" v-model="visibleDialog" :width="520">
     <div class="ant-confirm-body">
       <i class="anticon anticon-close-circle" style="color: #f00;"></i>
       <span class="ant-confirm-title">当前无法发布</span>
