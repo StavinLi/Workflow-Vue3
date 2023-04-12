@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-09-21 14:41:53
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2023-03-29 15:54:07
+ * @LastEditTime: 2023-04-12 17:48:26
  * @FilePath: /Workflow-Vue3/src/components/nodeWrap.vue
 -->
 <template>
@@ -137,22 +137,26 @@ let {
     copyerConfig1,
     conditionsConfig1,
 } = mapState();
-
-watch([flowPermission1, approverConfig1, copyerConfig1, conditionsConfig1], ([flow, approver, copyer, condition]) => {
+watch(flowPermission1, (flow) => {
     if (flow.flag && flow.id === _uid) {
         emits("update:flowPermission", flow.value);
     }
+});
+watch(approverConfig1, (approver) => {
     if (approver.flag && approver.id === _uid) {
         emits("update:nodeConfig", approver.value);
     }
+});
+watch(copyerConfig1, (copyer) => {
     if (copyer.flag && copyer.id === _uid) {
         emits("update:nodeConfig", copyer.value);
     }
+});
+watch(conditionsConfig1, (condition) => {
     if (condition.flag && condition.id === _uid) {
         emits("update:nodeConfig", condition.value);
     }
 });
-
 let {
     setPromoter,
     setApprover,
