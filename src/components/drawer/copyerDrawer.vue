@@ -1,11 +1,11 @@
 <!--
  * @Date: 2022-08-25 14:05:59
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2023-03-16 16:13:48
+ * @LastEditTime: 2023-05-24 15:20:53
  * @FilePath: /Workflow-Vue3/src/components/drawer/copyerDrawer.vue
 -->
 <template>
-    <el-drawer :append-to-body="true" title="抄送人设置" v-model="visible" custom-class="set_copyer" :show-close="false" :size="550" :before-close="saveCopyer"> 
+    <el-drawer :append-to-body="true" title="抄送人设置" v-model="visible" class="set_copyer" :show-close="false" :size="550" :before-close="saveCopyer"> 
         <div class="demo-drawer__content">
             <div class="copyer_content drawer_content">
                 <el-button type="primary" @click="addCopyer">添加成员</el-button>
@@ -34,13 +34,16 @@
 <script setup>
 import employeesRoleDialog from '../dialog/employeesRoleDialog.vue'
 import $func from '@/utils/index'
-import { mapState, mapMutations } from '@/utils/lib.js'
+import { useStore } from '@/stores/index'
 import { ref, watch, computed } from 'vue'
 let copyerConfig = ref({})
 let ccSelfSelectFlag = ref([])
 let copyerVisible = ref(false)
 let checkedList = ref([])
-let { copyerDrawer, copyerConfig1 } = mapState()
+let store = useStore()
+let { setCopyerConfig, setCopyer } = store
+let copyerDrawer = computed(()=> store.copyerDrawer)
+let copyerConfig1 = computed(()=> store.copyerConfig1)
 let visible = computed({
     get() {
         return copyerDrawer.value
@@ -49,7 +52,6 @@ let visible = computed({
         closeDrawer()
     }
 })
-let { setCopyerConfig, setCopyer } = mapMutations()
 watch(copyerConfig1, (val) => {
     copyerConfig.value = val.value;
     ccSelfSelectFlag.value = copyerConfig.value.ccSelfSelectFlag == 0 ? [] : [copyerConfig.value.ccSelfSelectFlag]

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-09-21 14:41:53
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2023-04-12 17:48:26
+ * @LastEditTime: 2023-05-24 15:20:24
  * @FilePath: /Workflow-Vue3/src/components/nodeWrap.vue
 -->
 <template>
@@ -89,7 +89,7 @@
 <script setup>
 import { onMounted, ref, watch, getCurrentInstance, computed } from "vue";
 import $func from "@/utils/index";
-import { mapState, mapMutations } from "@/utils/lib";
+import { useStore } from '@/stores/index'
 import { bgColors, placeholderList } from '@/utils/const'
 let _uid = getCurrentInstance().uid;
 
@@ -130,13 +130,22 @@ onMounted(() => {
     }
 });
 let emits = defineEmits(["update:flowPermission", "update:nodeConfig"]);
+let store = useStore();
 let {
-    isTried,
-    flowPermission1,
-    approverConfig1,
-    copyerConfig1,
-    conditionsConfig1,
-} = mapState();
+    setPromoter,
+    setApprover,
+    setCopyer,
+    setCondition,
+    setFlowPermission,
+    setApproverConfig,
+    setCopyerConfig,
+    setConditionsConfig,
+} = store;
+let isTried = computed(()=> store.isTried)
+let flowPermission1 = computed(()=> store.flowPermission1)
+let approverConfig1 = computed(()=> store.approverConfig1)
+let copyerConfig1 = computed(()=> store.copyerConfig1)
+let conditionsConfig1 = computed(()=> store.conditionsConfig1)
 watch(flowPermission1, (flow) => {
     if (flow.flag && flow.id === _uid) {
         emits("update:flowPermission", flow.value);
@@ -157,16 +166,7 @@ watch(conditionsConfig1, (condition) => {
         emits("update:nodeConfig", condition.value);
     }
 });
-let {
-    setPromoter,
-    setApprover,
-    setCopyer,
-    setCondition,
-    setFlowPermission,
-    setApproverConfig,
-    setCopyerConfig,
-    setConditionsConfig,
-} = mapMutations();
+
 const clickEvent = (index) => {
     if (index || index === 0) {
         isInputList.value[index] = true;

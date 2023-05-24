@@ -1,20 +1,19 @@
 /*
  * @Date: 2022-08-25 11:58:11
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2022-09-21 14:36:07
+ * @LastEditTime: 2023-05-24 15:19:57
  * @FilePath: /Workflow-Vue3/src/main.js
  */
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
 import './assets/main.css'
-import store from './store'
 import './css/override-element-ui.css'
 import 'element-plus/es/components/message/style/css'
-const app = createApp(App).use(store)
-app.use(router)
 
+const app = createApp(App).use(createPinia()).use(router)
 app.mount('#app')
 
 import nodeWrap from '@/components/nodeWrap.vue'

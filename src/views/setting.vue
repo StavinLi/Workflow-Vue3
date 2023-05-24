@@ -42,13 +42,13 @@ import { ref, onMounted } from "vue";
 import { useRoute } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { getWorkFlowData, setWorkFlowData } from '@/api/index';
-import { mapMutations } from "@/utils/lib";
+import { useStore } from '@/stores/index'
 import errorDialog from "@/components/dialog/errorDialog.vue";
 import promoterDrawer from "@/components/drawer/promoterDrawer.vue";
 import approverDrawer from "@/components/drawer/approverDrawer.vue";
 import copyerDrawer from "@/components/drawer/copyerDrawer.vue";
 import conditionDrawer from "@/components/drawer/conditionDrawer.vue";
-let { setTableId, setIsTried } = mapMutations()
+let { setTableId, setIsTried } = useStore()
 
 let tipList = ref([]);
 let tipVisible = ref(false);

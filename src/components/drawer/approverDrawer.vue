@@ -1,5 +1,5 @@
 <template>
-    <el-drawer :append-to-body="true" title="审批人设置" v-model="visible" custom-class="set_promoter" :show-close="false" :size="550" :before-close="saveApprover"> 
+    <el-drawer :append-to-body="true" title="审批人设置" v-model="visible" class="set_promoter" :show-close="false" :size="550" :before-close="saveApprover"> 
         <div class="demo-drawer__content">
             <div class="drawer_content">
                 <div class="approver_content">
@@ -93,7 +93,7 @@
 import {ref, watch, computed} from 'vue'
 import $func from '@/utils/index'
 import { setTypes, selectModes, selectRanges } from '@/utils/const'
-import { mapState, mapMutations } from '@/utils/lib'
+import { useStore } from '@/stores/index'
 import employeesDialog from '../dialog/employeesDialog.vue'
 import roleDialog from '../dialog/roleDialog.vue'
 
@@ -108,7 +108,10 @@ let approverVisible = ref(false)
 let approverRoleVisible = ref(false)
 let checkedRoleList = ref([])
 let checkedList = ref([])
-let { approverConfig1, approverDrawer } = mapState()
+let store = useStore()
+let { setApproverConfig, setApprover } = store
+let approverConfig1 = computed(()=> store.approverConfig1)
+let approverDrawer = computed(()=> store.approverDrawer)
 let visible = computed({
     get(){
         return approverDrawer.value
@@ -120,7 +123,6 @@ let visible = computed({
 watch(approverConfig1, (val)=>{
     approverConfig.value = val.value
 })
-let { setApproverConfig, setApprover} = mapMutations()
 let changeRange = ()=> {
     approverConfig.value.nodeUserList = [];
 }

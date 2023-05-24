@@ -1,12 +1,12 @@
 <!--
  * @Date: 2023-03-15 14:44:17
  * @LastEditors: StavinLi 495727881@qq.com
- * @LastEditTime: 2023-03-29 15:53:11
+ * @LastEditTime: 2023-05-24 15:20:48
  * @FilePath: /Workflow-Vue3/src/components/drawer/conditionDrawer.vue
 -->
 
 <template>
-    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" custom-class="condition_copyer" :show-close="false" :size="550" :before-close="saveCondition"> 
+    <el-drawer :append-to-body="true" title="条件设置" v-model="visible" class="condition_copyer" :show-close="false" :size="550" :before-close="saveCondition"> 
         <template #header="{ titleId, titleClass }">
             <h3 :id="titleId" :class="titleClass">条件设置</h3>
             <select v-model="conditionConfig.priorityLevel" class="priority_level">
@@ -86,7 +86,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import $func from '@/utils/index'
-import { mapState, mapMutations } from '@/utils/lib'
+import { useStore } from '@/stores/index'
 import { optTypes, opt1s } from '@/utils/const'
 import { getConditions } from '@/api/index'
 import employeesRoleDialog from '../dialog/employeesRoleDialog.vue'
@@ -102,7 +102,11 @@ let conditionList = ref([])
 let checkedList = ref([])
 let conditionRoleVisible = ref(false)
 
-let { tableId, conditionsConfig1, conditionDrawer } = mapState()
+let store = useStore()
+let { setCondition, setConditionsConfig } = store
+let tableId = computed(()=> store.tableId)
+let conditionsConfig1 = computed(()=> store.conditionsConfig1)
+let conditionDrawer = computed(()=> store.conditionDrawer)
 let visible = computed({
     get() {
         return conditionDrawer.value
@@ -118,7 +122,6 @@ watch(conditionsConfig1, (val) => {
         ? conditionsConfig.value.conditionNodes[val.priorityLevel - 1]
         : { nodeUserList: [], conditionList: [] }
 })
-let { setCondition, setConditionsConfig } = mapMutations()
 
 const changeOptType = (item) => {
     if (item.optType == 1) {
