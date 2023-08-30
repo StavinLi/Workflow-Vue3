@@ -27,13 +27,29 @@ app.directive('focus', {
   }
 });
 
+let debounce = (fn, delay) => {
+  var delay = delay || 100;
+  var timer;
+  return function() {
+    var th = this;
+    var args = arguments;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(function() {
+      timer = null;
+      fn.apply(th, args);
+    }, delay);
+  };
+}
+
 app.directive('enterNumber', {
   mounted(el, { value = 100 }, vnode) {
     el = el.nodeName == "INPUT" ? el : el.children[0]
     var RegStr = value == 0 ? `^[\\+\\-]?\\d+\\d{0,0}` : `^[\\+\\-]?\\d+\\.?\\d{0,${value}}`;
-    el.addEventListener('input', function () {
+    el.addEventListener('input', debounce(() => {
       el.value = el.value.match(new RegExp(RegStr, 'g'));
       el.dispatchEvent(new Event('input'))
-    });
+    }));
   }
 });
