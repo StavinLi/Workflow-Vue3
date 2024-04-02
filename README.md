@@ -91,11 +91,11 @@ if (type == 1 || type == 2) {
 ```
 #### 项目安装
 
-> git clone https://github.com/StavinLi/Workflow.git 点个赞吧！
+> git clone https://github.com/StavinLi/Workflow-Vue3.git 点个赞吧！
 
 #### 项目运行 node14.20.1
 > 1.环境依赖  `npm i`
 
-> 2.本地运行 `npm run serve` 
+> 2.本地运行 `npm run dev` 
 
 > 3.打包运行 `npm run build` 
